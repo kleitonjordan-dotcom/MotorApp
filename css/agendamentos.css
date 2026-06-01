@@ -1,0 +1,81 @@
+/* css/agendamentos.css */
+.agendamentos-container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.box-agendar, .lista-agendamentos {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    flex: 1;
+    min-width: 300px;
+}
+
+.select-veiculo {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background: white;
+    margin-bottom: 20px;
+}
+
+.textarea-descricao {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: vertical;
+    height: 100px;
+}
+
+.agendamento-card {
+    background: #f8f9fa;
+    border-left: 4px solid #ff6600;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+.agendamento-card h4 {
+    color: #ff6600;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.agendamento-card p {
+    color: #444;
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+/* Cores dos Status na área do cliente */
+.status-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.badge-Pendente {
+    background-color: #ffeaa7;
+    color: #d35400;
+}
+
+.badge-EmManutencao {
+    background-color: #dff9fb;
+    color: #2980b9;
+}
+
+.badge-Concluido {
+    background-color: #c8f7dc;
+    color: #27ae60;
+}

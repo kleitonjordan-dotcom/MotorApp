@@ -14,15 +14,16 @@ if ($conn->connect_error) {
 }
 
 $acao = $_POST['acao'] ?? $_GET['acao'] ?? '';
-$cliente_id = $_POST['cliente_id'] ?? $_GET['cliente_id'] ?? '';
-
-if (empty($cliente_id)) {
-    echo json_encode(["success" => false, "message" => "ID do cliente não informado."]);
-    exit();
-}
 
 // --- AÇÃO 1: LISTAR VEÍCULOS DO CLIENTE ---
 if ($acao === 'listar') {
+    $cliente_id = $_POST['cliente_id'] ?? $_GET['cliente_id'] ?? '';
+    
+    if (empty($cliente_id)) {
+        echo json_encode(["success" => false, "message" => "ID do cliente não informado."]);
+        exit();
+    }
+
     $sql = "SELECT id, marca, modelo, placa, ano FROM veiculo WHERE cliente_id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $cliente_id);
@@ -37,15 +38,17 @@ if ($acao === 'listar') {
     echo json_encode(["success" => true, "veiculos" => $veiculos]);
     $stmt->close();
 } 
+
 // --- AÇÃO 2: CADASTRAR NOVO VEÍCULO ---
 else if ($acao === 'cadastrar') {
+    $cliente_id = $_POST['cliente_id'] ?? $_GET['cliente_id'] ?? '';
     $marca = $_POST['marca'] ?? '';
     $modelo = $_POST['modelo'] ?? '';
     $placa = $_POST['placa'] ?? '';
     $ano = $_POST['ano'] ?? '';
 
-    if (empty($marca) || empty($modelo) || empty($placa)) {
-        echo json_encode(["success" => false, "message" => "Preencha marca, modelo e placa!"]);
+    if (empty($cliente_id) || empty($marca) || empty($modelo) || empty($placa)) {
+        echo json_encode(["success" => false, "message" => "Preencha todos os dados obrigatórios!"]);
         exit();
     }
 
@@ -60,23 +63,19 @@ else if ($acao === 'cadastrar') {
     }
 
     $stmt->close();
-} else {
-    echo json_encode(["success" => false, "message" => "Ação inválida."]);
-}
+} 
 
-$conn->close();
-
-$acao = $_POST['acao'] ?? $_GET['acao'] ?? '';
-
-if ($acao == 'excluir') {
-    $veiculo_id = $_POST['veiculo_id'] ?? '';
+// --- AÇÃO 3: EXCLUIR VEÍCULO ---
+else if ($acao === 'excluir') {
+    $veiculo_id = $_POST['veiculo_id'] ?? $_GET['veiculo_id'] ?? '';
 
     if (empty($veiculo_id)) {
         echo json_encode(["success" => false, "message" => "ID do veículo inválido."]);
         exit();
     }
 
-    $sql = "DELETE FROM veiculos WHERE id = ?";
+    // Mantido 'veiculo' no singular para bater certo com a base de dados
+    $sql = "DELETE FROM veiculo WHERE id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $veiculo_id);
 
@@ -85,9 +84,13 @@ if ($acao == 'excluir') {
     } else {
         echo json_encode(["success" => false, "message" => "Erro ao excluir o veículo."]);
     }
+    
     $stmt->close();
-    $conn->close();
-    exit();
+} 
+
+else {
+    echo json_encode(["success" => false, "message" => "Ação inválida."]);
 }
 
+$conn->close();
 ?>

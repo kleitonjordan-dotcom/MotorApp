@@ -1,0 +1,35 @@
+/* css/meus_veiculos.css */
+.veiculos-container {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.box-cadastro, .lista-veiculos {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    flex: 1;
+    min-width: 300px;
+}
+
+.veiculo-card {
+    background: #f8f9fa;
+    border-left: 4px solid #ff6600;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+.veiculo-card h4 {
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.veiculo-card p {
+    color: #666;
+    font-size: 14px;
+}

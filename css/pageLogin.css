@@ -1,0 +1,102 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#1e1e1e;
+    font-family:Arial;
+}
+
+.container{
+    width:350px;
+    padding:40px;
+    background:#2b2b2b;
+    border-radius:10px;
+    text-align:center;
+}
+
+h1{
+    color:white;
+    margin-bottom:30px;
+}
+
+form{
+    display:flex;
+    flex-direction:column;
+}
+
+input{
+    margin-bottom:15px;
+    padding:12px;
+    border:none;
+    border-radius:5px;
+}
+
+button{
+    padding:12px;
+    border:none;
+    border-radius:5px;
+    background:#ff6600;
+    color:white;
+    cursor:pointer;
+    font-size:16px;
+}
+
+a{
+    display:block;
+    margin-top:20px;
+    color:white;
+    text-decoration:none;
+}
+
+/* ===== Seletor Cliente / Mecânico ===== */
+.rotulo-tipo{
+    color:#bbbbbb;
+    font-size:13px;
+    text-align:left;
+    margin-bottom:6px;
+}
+
+.seletor-tipo{
+    display:flex;
+    background:#1e1e1e;
+    border-radius:8px;
+    padding:4px;
+    margin-bottom:18px;
+}
+
+/* esconde a bolinha padrão do radio; o label vira o "botão" */
+.seletor-tipo input[type="radio"]{
+    display:none;
+}
+
+.seletor-tipo label{
+    flex:1;
+    padding:10px 0;
+    border-radius:6px;
+    color:#999999;
+    font-weight:bold;
+    cursor:pointer;
+    transition:background .2s, color .2s;
+}
+
+.seletor-tipo input[type="radio"]:checked + label{
+    background:#ff6600;
+    color:white;
+}
+
+/* Mensagem de erro do login */
+.erro-login{
+    background:#5c1f1f;
+    color:#ffb3b3;
+    padding:10px;
+    border-radius:5px;
+    margin-bottom:15px;
+    font-size:14px;
+}

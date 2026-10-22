@@ -1,0 +1,123 @@
+/* css/painel_admin.css */
+
+/* Estilos específicos para a tabela e estrutura do Mecânico */
+.tabela-admin {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    margin-top: 20px;
+}
+
+.tabela-admin th, .tabela-admin td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.tabela-admin th {
+    background-color: #1e2229;
+    color: white;
+}
+
+.select-status {
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Cores dinâmicas para destacar cada situação */
+.status-Pendente { 
+    color: #d35400; 
+    border-color: #d35400;
+}
+
+.status-EmManutenção { 
+    color: #2980b9; 
+    border-color: #2980b9;
+}
+
+.status-Concluído { 
+    color: #27ae60; 
+    border-color: #27ae60;
+}
+
+.btn-atualizar {
+    background: #ff6600;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.btn-atualizar:hover {
+    background: #e05500;
+}
+
+/* ===== Área do mecânico: cards de resumo, filtros e novos status ===== */
+.admin-resumo {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(120px, 1fr));
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.admin-resumo a {
+    display: block;
+    text-decoration: none;
+    transition: transform .15s, box-shadow .15s;
+    background: #fff;
+    border-left: 4px solid #ff6600;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.admin-resumo strong {
+    display: block;
+    font-size: 28px;
+    color: #1e2229;
+}
+
+.admin-resumo span {
+    color: #666;
+    font-size: 13px;
+}
+
+.admin-resumo a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+}
+
+.tabela-wrapper {
+    overflow-x: auto;
+}
+
+.form-status {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.status-Confirmado {
+    color: #1976d2;
+    border-color: #1976d2;
+}
+
+.status-Cancelado {
+    color: #c0392b;
+    border-color: #c0392b;
+}
+
+@media (max-width: 800px) {
+    .admin-resumo { grid-template-columns: repeat(2, 1fr); }
+    .tabela-admin { min-width: 900px; }
+}
